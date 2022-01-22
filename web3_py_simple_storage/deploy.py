@@ -5,9 +5,10 @@ with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
     print(simple_storage_file)
 
-# Compile Solidity
 
 install_solc("0.6.0")
+# Compile Solidity
+
 
 compiled_sol = compile_standard(
     {
@@ -15,7 +16,7 @@ compiled_sol = compile_standard(
         "sources": {"SimpleStorage.sol": {"content": simple_storage_file}},
         "settings": {
             "outputSelection": {
-                "*": {"*": ["abi", "metadata", "evm.byetcode", "evm.sourceMap"]}
+                "*": {"*": ["abi", "metadata", "evm.bytecode", "evm.sourceMap"]}
             }
         },
     },
@@ -24,3 +25,12 @@ compiled_sol = compile_standard(
 
 with open("compiled_code.json", "w") as file:
     json.dump(compiled_sol, file)
+
+
+# get bytecode
+bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"][
+    "bytecode"
+]["object"]
+
+# get abi
+abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
