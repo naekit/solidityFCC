@@ -1,5 +1,6 @@
 from solcx import compile_standard, install_solc
 import json
+from web3 import Web3
 
 with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
@@ -34,3 +35,9 @@ bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"
 
 # get abi
 abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
+
+# connect to ganache
+w3 = Web3(Web3.HTTPProvider("http://0.0.0.0:7545"))
+chain_id = 5777
+my_address = "0xD6BD495CA11BF0439340FA6C22225BFC52282281"
+private_key = "0xa197bd3053d668edf360c0f69e784e51d5747db932302f66da39faffaaa58729"
