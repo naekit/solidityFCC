@@ -1,10 +1,14 @@
 from brownie import accounts
+import os
 
 
 def deploy_simple_storage():
     # account = accounts[0] <-- to add from local ganach-cli chain
     # print(account)
-    account = accounts.load("freecodecamp-account")
+    # account = accounts.load("fccsolidity")
+    # print(account)
+    account = accounts.add(os.getenv("PRIVATE_KEY"))
+    print(account)
 
 
 def main():
