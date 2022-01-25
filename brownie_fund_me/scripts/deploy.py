@@ -24,7 +24,7 @@ def deploy_fund_me():
     fund_me = FundMe.deploy(
         price_feed_address,
         {"from": account},
-        publish_source=True,
+        publish_source=config["networks"][network.show_active()].get("verify"),
     )
     print(f"Contract deployed to {fund_me.address}")
 
