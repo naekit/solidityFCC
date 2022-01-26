@@ -22,6 +22,5 @@ def test_only_owner_can_withdraw():
         pytest.skip("only for local testing")
     fund_me = deploy_fund_me()
     bad_actor = accounts.add()
-    fund_me.withdraw({"from": bad_actor})
     with pytest.raises(exceptions.VirtualMachineError):
         fund_me.withdraw({"from": bad_actor})
