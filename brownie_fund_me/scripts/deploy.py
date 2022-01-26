@@ -9,7 +9,6 @@ from scripts.helpful_scripts import (
 def deploy_fund_me():
     account = get_account()
     # Pass the price feed address to our fundMe contract
-
     # if we are on a persistent network like rinkeby, use the associated address
     # otherwise, deploy mocks
     if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
